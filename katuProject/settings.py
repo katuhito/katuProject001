@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'katu001',
+    'katu001.apps.Katu001Config',
 ]
 
 MIDDLEWARE = [
