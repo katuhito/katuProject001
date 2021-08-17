@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class BlogPost(models.Model):
 
@@ -16,7 +17,7 @@ class BlogPost(models.Model):
     #投稿日時のフィールド
     posted_at = models.DateTimeField(
         verbose_name = '投稿日時',
-        auto_now_add = True
+        default = timezone.now
     )
     #カテゴリのフィールド
     category = models.CharField(
