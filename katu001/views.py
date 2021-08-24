@@ -10,6 +10,8 @@ class IndexView(ListView):
     #モデルBlogPostのレコードのオブジェクトにorder_by()を適用して
     #BlogPostのレコードを投稿日時の降順で並べ替える。
     queryset = BlogPost.objects.order_by('-posted_at')
+    #1ページに表示するレコードの件数(ページネーション)
+    paginate_by = 2
 
 class BlogDetail(DetailView):
     template_name = 'post.html'
