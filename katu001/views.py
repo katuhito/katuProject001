@@ -18,6 +18,40 @@ class BlogDetail(DetailView):
     #クラス変数modelにモデルBlogPostを設定
     model = BlogPost
     
+class ScienceView(ListView):
+    template_name = 'science_list.html'
+    #クラス変数modelにモデルBlogPostを設定
+    model = BlogPost
+    # object_listキーの別名を設定
+    context_object_name = 'science_records'
+    #categry='scienceのレコードを抽出して投稿日時の降順で並べる'
+    queryset = BlogPost.objects.filter(category='science').order_by('-posted_at')
+    #1ページに表示するレコードの件数
+    paginate_by = 2
+
+class DailylifeView(ListView):
+    template_name = 'dailylife_list.html'
+    #クラス変数modelにモデルBlogPostを設定
+    model = BlogPost
+    # object_listキーの別名を設定
+    context_object_name = 'dailylife_records'
+    #categry='scienceのレコードを抽出して投稿日時の降順で並べる'
+    queryset = BlogPost.objects.filter(category='dailylife').order_by('-posted_at')
+    #1ページに表示するレコードの件数
+    paginate_by = 2
+
+class MusicView(ListView):
+    template_name = 'music_list.html'
+    #クラス変数modelにモデルBlogPostを設定
+    model = BlogPost
+    # object_listキーの別名を設定
+    context_object_name = 'music_records'
+    #categry='scienceのレコードを抽出して投稿日時の降順で並べる'
+    queryset = BlogPost.objects.filter(category='music').order_by('-posted_at')
+    #1ページに表示するレコードの件数
+    paginate_by = 2
+
+
 
 
     

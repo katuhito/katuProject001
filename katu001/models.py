@@ -3,7 +3,7 @@ from django.utils import timezone
 
 class BlogPost(models.Model):
 
-    CATEGORY = (('science', '科学のこと'), ('dailytime', '日常のこと'), ('music', '音楽のこと'))
+    CATEGORY = (('science', '科学のこと'), ('dailylife', '日常のこと'), ('music', '音楽のこと'))
 
     #タイトル用のフィールド
     title = models.CharField(
