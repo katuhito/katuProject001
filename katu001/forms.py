@@ -15,24 +15,24 @@ class ContactForm(forms.Form):
         super().__init__(*args, **kwargs)
 
         #nameフィールドのplaceholderにメッセージを登録
-        self.fields['name'].widget.atters['placeholder'] = 'お名前を入力してください。'
+        self.fields['name'].widget.attrs['placeholder'] = 'お名前を入力してください。'
         #nameフィールドを出力する<input>タグのclass属性を設定
-        self.fields['name'].widget.atters['class'] = 'form-control'
+        self.fields['name'].widget.attrs['class'] = 'form-control'
 
         #emailフィールドのplaceholderにメッセージを登録
-        self.fields['email'].widget.atters['placeholder'] = 'メールアドレスを入力してください。'
+        self.fields['email'].widget.attrs['placeholder'] = 'メールアドレスを入力してください。'
         #emailフィールドを出力する<input>タグのclass属性を設定
-        self.fields['email'].widget.atters['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
 
         #titleフィールドのplaceholderにメッセージを登録
-        self.fields['title'].widget.atters['placeholder'] = 'タイトルを入力して下さい。'
+        self.fields['title'].widget.attrs['placeholder'] = 'タイトルを入力して下さい。'
         #titleフィールドを出力する<input>タグのclass属性を設定
-        self.fields['title'].widget.atters['class'] = 'form-control'
+        self.fields['title'].widget.attrs['class'] = 'form-control'
 
         #messageフィールドのplaceholderにメッセージを登録
-        self.fields['message'].widget.atters['placeholder'] = 'メッセージを入力してください。'
+        self.fields['message'].widget.attrs['placeholder'] = 'メッセージを入力してください。'
         #messageフィールドを出力する<input>タグのclass属性を設定
-        self.fields['message'].widget.atters['class'] = 'form-control'
+        self.fields['message'].widget.attrs['class'] = 'form-control'
 
     def send_email(self):
         """フォームに入力された内容をメールで送信する"""
@@ -44,14 +44,14 @@ class ContactForm(forms.Form):
         #メールのタイトルの書式を設定
         subject = 'お問い合わせ： {}'.format(title)
         #フォームの入力データの書式を設定
-        message = '送信者名: {0}\nメールアドレス: {1}\nタイトル: {2}\メッセージ:n{3}'.format(name, email, title, message)
+        message = '送信者名: {0}\nメールアドレス: {1}\n タイトル: {2}\n メッセージ: {3}\n'.format(name, email, title, message)
         #メール送信元のアドレス
-        from_email = 'admin@example.com'
+        from_email = 'katuhitoh9@gmail.com'
         #送信先のメールアドレス
-        to_list = ['admin@example.com']
+        to_list = ['katu_hiro0516@wind.ocn.ne.jp']
         #EmailMessageオブジェクトを生成
-        message = EmailMessage(subject=subject, body=message, from_email=form_email, to=to_list,)
+        message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list,)
         #EmailMessageクラスのsend()でメールサーバーからメールを送信
         message.send()
-        
+
 
