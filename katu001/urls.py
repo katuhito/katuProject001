@@ -14,5 +14,7 @@ urlpatterns = [
     #dailylifeカテゴリ一覧のURLパターン
     path('dailylife-list/', views.DailylifeView.as_view(), name='dailylife_list'),
     #musicカテゴリーの一覧のURLパターン
-    path('music-list/', views.MusicView.as_view(), name='music_list'),    
+    path('music-list/', views.MusicView.as_view(), name='music_list'), 
+    #問い合わせページのURLパターン
+    path('contact/', views.ContactView.as_view(), name='contact'),   
 ]

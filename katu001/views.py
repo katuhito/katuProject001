@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
 from .models import BlogPost
+from django.views.generic import FormView
+from django.urls import reverse_lazy
+from .forms import ContactForm
+from django.contrib import messages
+
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -51,8 +56,26 @@ class MusicView(ListView):
     #1ページに表示するレコードの件数
     paginate_by = 2
 
+class ContactView(FormView):
+    """問い合わせページを一覧表示するビュー"""
+    template_name = 'contact.html'
+    #クラス変数form_classにforms.pyで定義したContactFormを設定
+    form_class = ContactForm
+    #送信後にリダイレクトするページ
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        """FormViewクラスのForm_valid()をオーバーライド
+        フォームのバリデーションを通過したデータがPOSTされたときに呼ばれる
+        メール送信を行う
+        """
+        #forms.pyのsend_email()を実行してメール送信を行う
+        form.send_email()
+        #送信完了後に表示するメッセージ
+        messages.success(self.request, 'お問い合わせは正常に送信されました。')
+        #戻り値はスーパークラスのform_valid()の戻り値(HttpResponseRedirect)
+        return super().form_valid(form)
+        
 
 
-
-    
 
